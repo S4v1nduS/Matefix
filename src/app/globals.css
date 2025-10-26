@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* === Brand tokens (Charcoal ↔︎ Amber) === */
+:root{
+  --brand-charcoal:#1E2124;
+  --brand-ink:#0F1113;
+  --brand-amber:#FF7A00;
+  --brand-amber-700:#E66A00;
+  --brand-sand:#FFF8F0;
+  --brand-amber-50:#FFF4E8;
+  --brand-amber-100:#FFE6CC;
+  --brand-amber-200:#FFD6B8;
+}
+
+/* Site base */
+@layer base{
+  html,body{ background-color: var(--brand-sand); color: var(--brand-ink); }
+}
+
+/* --- Universal inputs --- */
+input,textarea,select{
+  background:#fff!important;
+  border:1px solid rgba(0,0,0,.12)!important;
+  color:var(--brand-ink)!important;
+  border-radius:.75rem;
+  padding:.75rem 1rem;
+  width:100%;
+  transition: box-shadow .2s, border-color .2s;
+}
+input:focus,select:focus,textarea:focus{
+  outline:0;
+  border-color:var(--brand-amber)!important;
+  box-shadow:0 0 0 3px rgba(255,122,0,.15);
+}
+::placeholder{ color:#9ca3af; }
+
+/* --- Motion (you already had these) --- */
+@keyframes mf-fade-up{ from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }
+.fade-up{ animation:mf-fade-up .6s ease-out both }
+.fade-up-delay-1{ animation-delay:.08s }
+.fade-up-delay-2{ animation-delay:.16s }
+
+/* === THEME OVERRIDES (so you don’t have to touch every “blue-*” class) === */
+/* text */
+.text-blue-600{ color:var(--brand-amber)!important }
+.text-blue-700{ color:var(--brand-amber-700)!important }
+/* bg */
+.bg-blue-50{ background:var(--brand-amber-50)!important }
+.bg-blue-600{ background:var(--brand-amber)!important }
+.hover\:bg-blue-700:hover{ background:var(--brand-amber-700)!important }
+/* border */
+.border-blue-200{ border-color:var(--brand-amber-200)!important }
+/* rings (best-effort shim for Tailwind ring utilities you used) */
+.focus\:ring-blue-500:focus{ --tw-ring-color:var(--brand-amber)!important }
+.focus\:border-blue-500:focus{ border-color:var(--brand-amber)!important }
+
+/* Utility buttons (optional helpers you can reuse) */
+.btn-brand{
+  @apply inline-flex items-center justify-center font-semibold rounded-xl px-5 py-3 text-white;
+  background:var(--brand-amber);
+  box-shadow:0 18px 40px -20px rgba(255,122,0,.35);
+}
+.btn-brand:hover{ background:var(--brand-amber-700) }
